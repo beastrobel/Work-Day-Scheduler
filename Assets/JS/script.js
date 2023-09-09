@@ -4,53 +4,45 @@
 $(function () {
 var saveButton = $('.saveBtn');
 var colorBox = $('.time-block');
+var textBox = $('.description');
 var currentHour = dayjs().format('H');
 var today = dayjs();
 
-  //Saves input into local storage
-  function textSave() {
-    var textInput = $("#hour-9").val();
-    //If box is not empty, save to local storage
-    if(textInput != ""){
-      localStorage.setItem('9AM', textInput);
-      console.log(textInput);
-      }
-    }
-
-  //Listener for click events on save buttons
-  for (let i = 0; i < saveButton.length; i++){
+// Listener for click events on save buttons, saves input into local storage 
+for (let i = 0; i < saveButton.length; i++){
     saveButton[i].addEventListener('click', function () {
-      alert(this.innerText + "Saved!");
-      textSave();
+      var textInput = colorBox[i];
+      textInput = $(textInput.children[1]).val();
+      localStorage.setItem((i+9) + '-hour', textInput);
+      console.log(textInput);
+      
     });
+  }
+
+  //Retrieves text from local storage and displays it in the appropriate time slot
+  for (let i = 0; i < saveButton.length; i++){
+    var storedText = localStorage.getItem((i+9) + '-hour');
+    textBox[i].textContent = storedText;
+    console.log(storedText);
   }
 
   // Applies the past, present, or future class to each time block by comparing the id to the current hour. 
   function boxHighlighter(){
     for(let i=0; i<colorBox.length; i++) {
-    console.log(colorBox[i]);
       if((i+9)==currentHour){
       colorBox[i].classList.add('present');
-      console.log('present');
       }
       if((i+9)>currentHour){
-      colorBox[i].classList.add('future');
-      console.log('future');  
+      colorBox[i].classList.add('future'); 
       }    
       if((i+9)<currentHour){
-      colorBox[i].classList.add('past');
-      console.log('past');  
+      colorBox[i].classList.add('past'); 
       }  
     } 
   }
   boxHighlighter();
 
-  //Retrieves text from local storage and displays it in the appropriate time slot
-  function renderText(){
-    var textRender = localStorage.getItem("9AM");
-    document.querySelector("#hour-9").textContent = textRender;
-  } 
-  renderText();
   // Displays the current date in the header of the page
   $('#currentDay').text(today.format('dddd, MMM D, YYYY'));
+
 });
