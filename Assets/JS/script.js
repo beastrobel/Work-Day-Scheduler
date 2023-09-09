@@ -7,14 +7,21 @@ var colorBox = $('.time-block');
 var currentHour = dayjs().format('H');
 var today = dayjs();
 
-  // TODO: Add a listener for click events on the save button. This code should
+  // TODO: This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
-  saveButton.on('click', function () {
-    
+  
+  //Listener for click events on save buttons
+  saveButton.on('click', function (event) {
+    event.preventDefault();
+    var textEntry = "test";
+    console.log(textEntry);
+    localStorage.setItem('Text Entry', textEntry);
+
+    //var textEntry = $('input[name="description"]');   
   });
   
   // For testing and visualizing - delete
@@ -37,14 +44,12 @@ var today = dayjs();
       }  
     } 
   }
-  console.log(currentHour);
   boxHighlighter();
 
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
 
-  // Displays the current date in the header of the page.
-
+  // Displays the current date in the header of the page
   $('#currentDay').text(today.format('dddd, MMM D, YYYY'));
 });
