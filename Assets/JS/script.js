@@ -2,6 +2,7 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function () {
+var saveButton = $('.saveBtn');
 var colorBox = $('.time-block');
 var currentHour = dayjs().format('H');
 var today = dayjs();
@@ -12,7 +13,12 @@ var today = dayjs();
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
+  saveButton.on('click', function () {
+    
+  });
   
+  // For testing and visualizing - delete
+  currentHour = 11;
   // Applies the past, present, or future class to each time block by comparing the id to the current hour. 
   function boxHighlighter(){
     for(var i=0; i<colorBox.length; i++) {
