@@ -11,8 +11,7 @@ var today = dayjs();
 // Listener for click events on save buttons, saves input into local storage 
 for (let i = 0; i < saveButton.length; i++){
     saveButton[i].addEventListener('click', function () {
-      var textInput = colorBox[i];
-      textInput = $(textInput.children[1]).val();
+      var textInput = $(textBox[i]).val();
       localStorage.setItem((i+9) + '-hour', textInput);
       console.log(textInput);
       
