@@ -17,15 +17,15 @@ var today = dayjs();
   //Listener for click events on save buttons
   saveButton.on('click', function (event) {
     event.preventDefault();
-    var textEntry = "test";
-    console.log(textEntry);
-    localStorage.setItem('Text Entry', textEntry);
-
-    //var textEntry = $('input[name="description"]');   
+    var textInput = document.body.children[1].children[0].children[1].value;
+    console.log (textInput);
+    localStorage.setItem('text input', textInput);
+  
   });
   
   // For testing and visualizing - delete
   currentHour = 11;
+
   // Applies the past, present, or future class to each time block by comparing the id to the current hour. 
   function boxHighlighter(){
     for(var i=0; i<colorBox.length; i++) {
