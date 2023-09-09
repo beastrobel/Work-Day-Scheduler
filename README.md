@@ -7,7 +7,7 @@ The challenge was to make a Work Day Scheduler web application functional with J
 ## Usage
 
 The website’s URL is https://beastrobel.github.io/Work-Day-Scheduler. A screenshot can be viewed below. In order to use the Work Day Scheduler, type your schedule into the time slots and click save next to each entry. The application will "remember" your schedule. The repository for this project can be found at https://github.com/beastrobel/Work-Day-Scheduler.
-![screenshot of website](./Work-Day-Scheduler.png)
+![screenshot of website](./Assets/Work-Day-Scheduler.jpg)
 
 ## Credits
 
