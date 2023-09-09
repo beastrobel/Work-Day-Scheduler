@@ -7,28 +7,27 @@ var colorBox = $('.time-block');
 var currentHour = dayjs().format('H');
 var today = dayjs();
 
-  // TODO: This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-  
+  //Saves input into local storage
+  function textSave() {
+    var textInput = $("#hour-9").val();
+    //If box is not empty, save to local storage
+    if(textInput != ""){
+      localStorage.setItem('9AM', textInput);
+      console.log(textInput);
+      }
+    }
+
   //Listener for click events on save buttons
-  saveButton.on('click', function (event) {
-    event.preventDefault();
-    var textInput = document.body.children[1].children[0].children[1].value;
-    console.log (textInput);
-    localStorage.setItem('text input', textInput);
-  
-  });
-  
-  // For testing and visualizing - delete
-  currentHour = 11;
+  for (let i = 0; i < saveButton.length; i++){
+    saveButton[i].addEventListener('click', function () {
+      alert(this.innerText + "Saved!");
+      textSave();
+    });
+  }
 
   // Applies the past, present, or future class to each time block by comparing the id to the current hour. 
   function boxHighlighter(){
-    for(var i=0; i<colorBox.length; i++) {
+    for(let i=0; i<colorBox.length; i++) {
     console.log(colorBox[i]);
       if((i+9)==currentHour){
       colorBox[i].classList.add('present');
@@ -46,10 +45,12 @@ var today = dayjs();
   }
   boxHighlighter();
 
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-
+  //Retrieves text from local storage and displays it in the appropriate time slot
+  function renderText(){
+    var textRender = localStorage.getItem("9AM");
+    document.querySelector("#hour-9").textContent = textRender;
+  } 
+  renderText();
   // Displays the current date in the header of the page
   $('#currentDay').text(today.format('dddd, MMM D, YYYY'));
 });
