@@ -2,7 +2,7 @@
 
 ## Description
 
-The challenge was to make a Work Day Scheduler web application functional with JavaScript and JQuery. The application allows users to record their schedule in the time slots and save each entry individually. The application uses Day.js to dynamically color code the current hour(red), past events(grey), and future events(green). My stragegy for this project was to store the user's input in local storage, and then retrieve the data when the page is refreshed. I used arrays and for-loops to organize the entries and to create the key-value pairs for local storage.  
+The challenge was to make a Work Day Scheduler web application functional with JavaScript and JQuery. The application allows users to record their schedule in the time slots and save each entry individually. The application uses Day.js to dynamically color code the current hour, past events, and future events. My stragegy for this project was to store the user's input in local storage, and then retrieve the data when the page is refreshed. I used arrays and for-loops to organize the entries and to create the key-value pairs for local storage.  
 
 ## Usage
 
